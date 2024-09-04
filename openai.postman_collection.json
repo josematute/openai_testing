@@ -80,7 +80,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/Users/jemg/Desktop/Elon musk - Work like hell 80 - 100 hours a week.mp3"
+									"src": "/Users/jemg/dev/openai_testing/files/Elon musk - Work like hell 80 - 100 hours a week.mp3"
 								},
 								{
 									"key": "model",
@@ -139,11 +139,11 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/Users/jemg/Desktop/PERDEMOS MUCHO TIEMPO  CÓMO SER MÁS PRODUCTIVO__ ESTRATEGIAS ESTOICAS.mp3"
+									"src": "/Users/jemg/dev/openai_testing/files/PERDEMOS MUCHO TIEMPO  CÓMO SER MÁS PRODUCTIVO__ ESTRATEGIAS ESTOICAS.mp3"
 								},
 								{
 									"key": "model",
-									"value": "whisper-1\"",
+									"value": "whisper-1",
 									"type": "text"
 								}
 							]
@@ -164,55 +164,316 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Functions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"model\": \"gpt-4o\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"What's the weather like in Boston today?\"\n    }\n  ],\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"get_current_weather\",\n        \"description\": \"Get the current weather in a given location\",\n        \"parameters\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"location\": {\n              \"type\": \"string\",\n              \"description\": \"The city and state, e.g. San Francisco, CA\"\n            },\n            \"unit\": {\n              \"type\": \"string\",\n              \"enum\": [\"celsius\", \"fahrenheit\"]\n            }\n          },\n          \"required\": [\"location\"]\n        }\n      }\n    }\n  ],\n  \"tool_choice\": \"auto\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/chat/completions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"chat",
+								"completions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logprobs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"model\": \"gpt-4o\",\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": \"Hello!\"\n      }\n    ],\n    \"logprobs\": true,\n    \"top_logprobs\": 2\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/chat/completions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"chat",
+								"completions"
+							]
+						}
+					},
+					"response": []
 				}
-			]
+			],
+			"description": "[https://platform.openai.com/docs/api-reference/audio](https://platform.openai.com/docs/api-reference/audio)"
 		},
 		{
-			"name": "chat/completions",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{OPENAI_API_KEY}}",
-							"type": "string"
+			"name": "Chat",
+			"item": [
+				{
+					"name": "Default",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"model\": \"gpt-4o\",\n    \"messages\": [\n      {\n        \"role\": \"system\",\n        \"content\": \"You are a helpful assistant.\"\n      },\n      {\n        \"role\": \"user\",\n        \"content\": \"Hello!\"\n      }\n    ]\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/chat/completions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"chat",
+								"completions"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"model\": \"gpt-3.5-turbo\",\n    \"messages\": [\n      {\n      \"role\": \"system\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"You are Marv, a chatbot that reluctantly answers questions with sarcastic responses.\"\n        }\n      ]\n    },\n      {\n        \"role\": \"user\",\n        \"content\": \"You know, you could tone that sarcasm quite a bit\"\n      }\n    ]\n  }",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Image Input",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer $OPENAI_API_KEY"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"model\": \"gpt-4o\",\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"What's in this image?\"\n          },\n          {\n            \"type\": \"image_url\",\n            \"image_url\": {\n              \"url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Victoire_de_Samothrace_-_Musee_du_Louvre_-_20190812.jpg/1200px-Victoire_de_Samothrace_-_Musee_du_Louvre_-_20190812.jpg\"\n            }\n          }\n        ]\n      }\n    ],\n    \"max_tokens\": 300\n  }"
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/chat/completions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"chat",
+								"completions"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "https://api.openai.com/v1/chat/completions",
-					"protocol": "https",
-					"host": [
-						"api",
-						"openai",
-						"com"
-					],
-					"path": [
-						"v1",
-						"chat",
-						"completions"
-					]
+				{
+					"name": "Streaming",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"model\": \"gpt-4o\",\n    \"messages\": [\n      {\n        \"role\": \"system\",\n        \"content\": \"You are a helpful assistant.\"\n      },\n      {\n        \"role\": \"user\",\n        \"content\": \"Explain me in three paragraphs if you think about the roman empire daily.\"\n      }\n    ],\n    \"stream\": true\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/chat/completions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"chat",
+								"completions"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"description": "[https://platform.openai.com/docs/api-reference/chat](https://platform.openai.com/docs/api-reference/chat)"
+		},
+		{
+			"name": "Embeddings",
+			"item": [
+				{
+					"name": "Create embeddings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"The food was delicious and the waiter...\",\n    \"model\": \"text-embedding-ada-002\",\n    \"encoding_format\": \"float\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/embeddings",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"embeddings"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://platform.openai.com/docs/api-reference/embeddings](https://platform.openai.com/docs/api-reference/embeddings)"
+		},
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "Upload file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "purpose",
+									"value": "fine-tune",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/jemg/dev/openai_testing/files/roman_empire_new_2024.jsonl"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/files",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"files"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List files",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openai.com/v1/files",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"files"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://platform.openai.com/docs/api-reference/files](https://platform.openai.com/docs/api-reference/files)"
+		},
+		{
+			"name": "Fine-tuning",
+			"item": [
+				{
+					"name": "Default",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"training_file\": \"file-VEvBiXtuI7N2aDeRFw7Vgi2b\",\n    \"model\": \"gpt-4o-2024-08-06\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/fine_tuning/jobs",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"fine_tuning",
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://platform.openai.com/docs/api-reference/fine-tuning](https://platform.openai.com/docs/api-reference/fine-tuning)\n\nAvailable models: [https://platform.openai.com/docs/guides/fine-tuning/which-models-can-be-fine-tuned](https://platform.openai.com/docs/guides/fine-tuning/which-models-can-be-fine-tuned)"
 		}
 	],
 	"auth": {
