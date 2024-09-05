@@ -164,68 +164,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "Functions",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"model\": \"gpt-4o\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"What's the weather like in Boston today?\"\n    }\n  ],\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"get_current_weather\",\n        \"description\": \"Get the current weather in a given location\",\n        \"parameters\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"location\": {\n              \"type\": \"string\",\n              \"description\": \"The city and state, e.g. San Francisco, CA\"\n            },\n            \"unit\": {\n              \"type\": \"string\",\n              \"enum\": [\"celsius\", \"fahrenheit\"]\n            }\n          },\n          \"required\": [\"location\"]\n        }\n      }\n    }\n  ],\n  \"tool_choice\": \"auto\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://api.openai.com/v1/chat/completions",
-							"protocol": "https",
-							"host": [
-								"api",
-								"openai",
-								"com"
-							],
-							"path": [
-								"v1",
-								"chat",
-								"completions"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Logprobs",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"model\": \"gpt-4o\",\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": \"Hello!\"\n      }\n    ],\n    \"logprobs\": true,\n    \"top_logprobs\": 2\n  }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://api.openai.com/v1/chat/completions",
-							"protocol": "https",
-							"host": [
-								"api",
-								"openai",
-								"com"
-							],
-							"path": [
-								"v1",
-								"chat",
-								"completions"
-							]
-						}
-					},
-					"response": []
 				}
 			],
 			"description": "[https://platform.openai.com/docs/api-reference/audio](https://platform.openai.com/docs/api-reference/audio)"
@@ -335,6 +273,105 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Functions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"model\": \"gpt-4o\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"What's the weather like in Boston today?\"\n    }\n  ],\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"get_current_weather\",\n        \"description\": \"Get the current weather in a given location\",\n        \"parameters\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"location\": {\n              \"type\": \"string\",\n              \"description\": \"The city and state, e.g. San Francisco, CA\"\n            },\n            \"unit\": {\n              \"type\": \"string\",\n              \"enum\": [\"celsius\", \"fahrenheit\"]\n            }\n          },\n          \"required\": [\"location\"]\n        }\n      }\n    }\n  ],\n  \"tool_choice\": \"auto\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/chat/completions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"chat",
+								"completions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logprobs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"model\": \"gpt-4o\",\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": \"Hello!\"\n      }\n    ],\n    \"logprobs\": true,\n    \"top_logprobs\": 2\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/chat/completions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"chat",
+								"completions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fine Tune Chat",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"model\": \"ft:gpt-4o-2024-08-06:personal::A3yUPPoe\",\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": \"Tell me about a recent discovery from the Roman Empire.\"\n      }\n    ]\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/chat/completions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"chat",
+								"completions"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "[https://platform.openai.com/docs/api-reference/chat](https://platform.openai.com/docs/api-reference/chat)"
@@ -394,7 +431,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/Users/jemg/dev/openai_testing/files/roman_empire_new_2024.jsonl"
+									"src": "/Users/jemg/dev/openai_testing/files/roman_empire_fake_training.jsonl"
 								}
 							]
 						},
@@ -434,6 +471,73 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Retrieve file",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openai.com/v1/files/file-L0ecYJHksa9nFevL4F2l4lTD",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"files",
+								"file-L0ecYJHksa9nFevL4F2l4lTD"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete file",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.openai.com/v1/files/file-VEvBiXtuI7N2aDeRFw7Vgi2b",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"files",
+								"file-VEvBiXtuI7N2aDeRFw7Vgi2b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve file content",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openai.com/v1/files/file-L0ecYJHksa9nFevL4F2l4lTD/content",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"files",
+								"file-L0ecYJHksa9nFevL4F2l4lTD",
+								"content"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "[https://platform.openai.com/docs/api-reference/files](https://platform.openai.com/docs/api-reference/files)"
@@ -442,13 +546,13 @@
 			"name": "Fine-tuning",
 			"item": [
 				{
-					"name": "Default",
+					"name": "Create fine-tuning job",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"training_file\": \"file-VEvBiXtuI7N2aDeRFw7Vgi2b\",\n    \"model\": \"gpt-4o-2024-08-06\"\n  }",
+							"raw": "{\n    \"training_file\": \"file-L0ecYJHksa9nFevL4F2l4lTD\",\n    \"model\": \"gpt-4o-2024-08-06\"\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -471,9 +575,254 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "List fine-tuning jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openai.com/v1/fine_tuning/jobs",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"fine_tuning",
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List fine-tuning events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openai.com/v1/fine_tuning/jobs/{{fine_tuning_job_id}}/events",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"fine_tuning",
+								"jobs",
+								"{{fine_tuning_job_id}}",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List fine-tuning checkpoints",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openai.com/v1/fine_tuning/jobs/{{fine_tuning_job_id}}/checkpoints",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"fine_tuning",
+								"jobs",
+								"{{fine_tuning_job_id}}",
+								"checkpoints"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve fine-tuning job",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openai.com/v1/fine_tuning/jobs/{{fine_tuning_job_id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"fine_tuning",
+								"jobs",
+								"{{fine_tuning_job_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel fine-tuning",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://api.openai.com/v1/fine_tuning/jobs/{{fine_tuning_to_cancel_job_id}}/cancel",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"fine_tuning",
+								"jobs",
+								"{{fine_tuning_to_cancel_job_id}}",
+								"cancel"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "[https://platform.openai.com/docs/api-reference/fine-tuning](https://platform.openai.com/docs/api-reference/fine-tuning)\n\nAvailable models: [https://platform.openai.com/docs/guides/fine-tuning/which-models-can-be-fine-tuned](https://platform.openai.com/docs/guides/fine-tuning/which-models-can-be-fine-tuned)"
+		},
+		{
+			"name": "Batch",
+			"item": [],
+			"description": "[https://platform.openai.com/docs/api-reference/batch](https://platform.openai.com/docs/api-reference/batch)"
+		},
+		{
+			"name": "Images",
+			"item": [
+				{
+					"name": "Create image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"model\": \"dall-e-3\",\n    \"prompt\": \"A picture of how new york city would have looked like if the roman empire was still up today and controlling the American territory.\",\n    \"n\": 1,\n    \"size\": \"1024x1024\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/images/generations",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"images",
+								"generations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create image edit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/jemg/dev/openai_testing/files/image_edit_mask.png"
+								},
+								{
+									"key": "prompt",
+									"value": "Add a baby duck toy in the pool",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/images/edits",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"images",
+								"edits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create image variation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/jemg/dev/openai_testing/files/dalle3_img_example.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/images/variations",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"images",
+								"variations"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://platform.openai.com/docs/api-reference/images](https://platform.openai.com/docs/api-reference/images)"
+		},
+		{
+			"name": "Models",
+			"item": [],
+			"description": "[https://platform.openai.com/docs/api-reference/models](https://platform.openai.com/docs/api-reference/models)"
+		},
+		{
+			"name": "Moderations",
+			"item": [],
+			"description": "[https://platform.openai.com/docs/api-reference/moderations](https://platform.openai.com/docs/api-reference/moderations)"
 		}
 	],
 	"auth": {
@@ -506,6 +855,20 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "fine_tuning_job_id",
+			"value": "ftjob-j72Yhk168dx4tTDQIiwBg6fR"
+		},
+		{
+			"key": "fine_tuning_to_cancel_job_id",
+			"value": "ftjob-VGtLGx1sc5eOBTHuGHJFTka2"
+		},
+		{
+			"key": "file_id",
+			"value": "file-VEvBiXtuI7N2aDeRFw7Vgi2b"
 		}
 	]
 }
