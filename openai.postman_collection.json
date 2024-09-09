@@ -815,14 +815,89 @@
 			"description": "[https://platform.openai.com/docs/api-reference/images](https://platform.openai.com/docs/api-reference/images)"
 		},
 		{
-			"name": "Models",
-			"item": [],
-			"description": "[https://platform.openai.com/docs/api-reference/models](https://platform.openai.com/docs/api-reference/models)"
+			"name": "Moderations",
+			"item": [
+				{
+					"name": "Create moderation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"input\": \"I want to kill them.\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/moderations",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"moderations"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://platform.openai.com/docs/api-reference/moderations](https://platform.openai.com/docs/api-reference/moderations)"
 		},
 		{
-			"name": "Moderations",
-			"item": [],
-			"description": "[https://platform.openai.com/docs/api-reference/moderations](https://platform.openai.com/docs/api-reference/moderations)"
+			"name": "Models",
+			"item": [
+				{
+					"name": "List models",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openai.com/v1/models",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"models"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve model",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.openai.com/v1/models/gpt-4-1106-preview",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"models",
+								"gpt-4-1106-preview"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "[https://platform.openai.com/docs/api-reference/models](https://platform.openai.com/docs/api-reference/models)"
 		}
 	],
 	"auth": {
